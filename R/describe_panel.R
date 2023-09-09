@@ -1,6 +1,6 @@
 #' Calculating descriptive statistics for selected variables in the panel data
 #'
-#' Inspired by Stata's xtsum command and corresponding discussion in https://stackoverflow.com/questions/49282083/xtsum-command-for-r. 
+#' Inspired by Stata's xtsum command and corresponding discussion at https://stackoverflow.com/questions/49282083/xtsum-command-for-r. 
 #' Calculates the mean, the variance, and the standard deviation of selected variables for panel data. 
 #' Decomposes the variance and the standard deviation into between and within components.
 #' @param data The data frame
