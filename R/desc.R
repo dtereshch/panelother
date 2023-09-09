@@ -2,7 +2,7 @@
 #'
 #' Created to provide basic descriptive statistics in the tibble format
 #' @param data The data frame
-#' @param vars The vector of columns/variables of interest
+#' @param vars The vector of numeric columns/variables of interest
 #' @return The tibble with basic descriptive statistics of selected columns
 #' @examples 
 #' data("iris")
@@ -16,7 +16,7 @@ desc <- function(data, vars){
   desc_tibble <- data %>%
     select(all_of(vars)) %>%
     summarise(across(everything(), 
-                     list(n = \(x) number(x), 
+                     list(n = \(x) tidyother::number(x), 
                           mean = \(x) mean(x, na.rm = TRUE), 
                           median = \(x) median(x, na.rm = TRUE), 
                           sd = \(x) sd(x, na.rm = TRUE), 
