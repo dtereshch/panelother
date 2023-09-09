@@ -19,7 +19,7 @@ descby <- function(data, vars, by){
     group_by(across(all_of(by))) %>%
     select(all_of(vars)) %>%
     summarise(across(everything(), 
-                     list(n = \(x) number(x), 
+                     list(n = \(x) tidyother::number(x), 
                           mean = \(x) mean(x, na.rm = TRUE), 
                           median = \(x) median(x, na.rm = TRUE), 
                           sd = \(x) sd(x, na.rm = TRUE), 
