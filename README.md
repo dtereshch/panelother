@@ -18,6 +18,7 @@ library(tidyother)
 ?describe
 ?describe_by
 ?describe_panel
+?plot_heterog
 ```
 
 ## Contribution
