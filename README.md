@@ -14,6 +14,10 @@ install_github("dtereshch/tidyother")
 ## Usage
 ```
 library(tidyother)
+
+?describe
+?describe_by
+?describe_panel
 ```
 
 ## Contribution
