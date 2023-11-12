@@ -18,4 +18,4 @@ library(tidyother)
 
 ## Contribution
 
-If you think you have encountered a bug, please submit an ![issue](https://github.com/dtereshch/tidyother/issues). 
+If you think you have encountered a bug, please submit an [issue](https://github.com/dtereshch/tidyother/issues). 
