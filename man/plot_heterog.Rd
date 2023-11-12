@@ -21,7 +21,6 @@ Created to provide insights about heterogeneity among groups using `ggplot2` fun
 }
 \examples{
 data("Fatalities", package = "AER")
-Fatalities <- mutate(Fatalities, fatalrate = fatal / pop * 10000)
 plot_heterog(Fatalities, fatalrate, year)
 plot_heterog(Fatalities, fatalrate, state)
 }

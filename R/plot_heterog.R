@@ -7,7 +7,6 @@
 #' @return The ggplot object
 #' @examples 
 #' data("Fatalities", package = "AER")
-#' Fatalities <- mutate(Fatalities, fatalrate = fatal / pop * 10000)
 #' plot_heterog(Fatalities, fatalrate, year)
 #' plot_heterog(Fatalities, fatalrate, state)
 #' @export
