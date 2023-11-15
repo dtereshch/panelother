@@ -4,6 +4,8 @@
 
 This is an R package that I developed for my personal use to make it easier for myself to work with data. However, everyone is welcome to use it if they find it helpful. 
 
+The name "tidyother" implies that I am heavily inspired by the approach implemented in the "tidyverse", but use it in *other* applications.
+
 ## Installation
 
 ```
