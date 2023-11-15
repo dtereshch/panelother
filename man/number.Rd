@@ -4,10 +4,10 @@
 \alias{number}
 \title{Counting the number of non-missing values}
 \usage{
-number(x, na.rm = TRUE)
+number(varname, na.rm = TRUE)
 }
 \arguments{
-\item{x}{The column of interest}
+\item{varname}{The column/variable of interest}
 }
 \value{
 The number of non-missing values in x

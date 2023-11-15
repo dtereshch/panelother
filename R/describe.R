@@ -2,19 +2,19 @@
 #'
 #' Created to provide basic descriptive statistics in the tibble format
 #' @param data The data frame
-#' @param vars The vector of numeric columns/variables of interest
+#' @param varnames The vector of numeric columns/variables of interest
 #' @return The tibble with basic descriptive statistics of selected columns
 #' @examples 
 #' data("iris")
 #' vars_select <- c("Sepal.Length", "Sepal.Width")
 #' describe(iris, vars_select) 
 #' @export
-describe <- function(data, vars){
+describe <- function(data, varnames){
   require(dplyr)
   require(tidyr)
   
   desc_tibble <- data %>%
-    select(all_of(vars)) %>%
+    select(all_of(varnames)) %>%
     summarise(across(everything(), 
                      list(n = \(x) tidyother::number(x), 
                           mean = \(x) mean(x, na.rm = TRUE), 

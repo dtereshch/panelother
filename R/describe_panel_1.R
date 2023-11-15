@@ -5,22 +5,22 @@
 #' Decomposes the variance and the standard deviation into between and within components.
 #' @param data The data frame
 #' @param varname The numeric variable of interest
-#' @param unit The object id variable
+#' @param entity The object id variable
 #' @return The tibble with the mean, the variation, and the standard deviation of selected variable for panel data. 
 #' @examples 
 #' data("Crime", package = "plm")
 #' describe_panel_1(Crime, crmrte, county)
 #' @export
-describe_panel_1 <- function(data, varname, unit) {
+describe_panel_1 <- function(data, varname, entity) {
   require(rlang)
   require(dplyr)
   require(tidyr)
   
   varname <- enquo(varname)
-  unit <- enquo(unit)
+  entity <- enquo(entity)
   
   overall <- data %>%
-    dplyr::select(c(!!unit, !!varname)) %>%
+    dplyr::select(c(!!entity, !!varname)) %>%
     drop_na() %>%
     ungroup() %>%
     mutate(diff_sq_overall = (!!varname - mean(!!varname, na.rm = TRUE))^2) %>%
@@ -34,10 +34,10 @@ describe_panel_1 <- function(data, varname, unit) {
               variable_overall =  quo_name(varname))
   
   between <- data %>% 
-    dplyr::select(c(!!unit, !!varname)) %>%
+    dplyr::select(c(!!entity, !!varname)) %>%
     drop_na() %>%
     mutate(diff_sq_overall = (!!varname - overall$mean_overall)^2) %>%
-    dplyr::group_by(!!unit) %>%
+    dplyr::group_by(!!entity) %>%
     summarise(mean_within = mean(!!varname, na.rm = TRUE),
               diff_sq_berween = (mean_within - overall$mean_overall)^2) %>%
     ungroup() %>%
@@ -49,14 +49,14 @@ describe_panel_1 <- function(data, varname, unit) {
               variable_between =  quo_name(varname))
   
   within <- data %>% 
-    dplyr::select(c(!!unit, !!varname)) %>%
+    dplyr::select(c(!!entity, !!varname)) %>%
     drop_na() %>%
-    dplyr::group_by(!!unit) %>%
+    dplyr::group_by(!!entity) %>%
     summarise(mean_within = mean(!!varname, na.rm = TRUE),
               n_within = n()) %>%
     ungroup() %>%
-    dplyr::full_join(dplyr::select(data, c(!!unit, !!varname)), by = quo_name(unit)) %>%
-    dplyr::group_by(!!unit) %>%
+    dplyr::full_join(dplyr::select(data, c(!!entity, !!varname)), by = quo_name(entity)) %>%
+    dplyr::group_by(!!entity) %>%
     mutate(var_scaled = scale(!!varname, scale = FALSE)) %>%
     ungroup() %>%
     mutate(diff_within = !!varname - mean_within + overall$mean_overall) %>%  # Stata's way

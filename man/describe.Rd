@@ -4,12 +4,12 @@
 \alias{describe}
 \title{Calculating basic descriptive statistics}
 \usage{
-describe(data, vars)
+describe(data, varnames)
 }
 \arguments{
 \item{data}{The data frame}
 
-\item{vars}{The vector of numeric columns/variables of interest}
+\item{varnames}{The vector of numeric columns/variables of interest}
 }
 \value{
 The tibble with basic descriptive statistics of selected columns

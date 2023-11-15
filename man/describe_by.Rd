@@ -4,12 +4,12 @@
 \alias{describe_by}
 \title{Calculating group descriptive statistics}
 \usage{
-describe_by(data, vars, by)
+describe_by(data, varnames, by)
 }
 \arguments{
 \item{data}{The data frame}
 
-\item{vars}{The vector of numeric columns/variables of interest}
+\item{varnames}{The vector of numeric columns/variables of interest}
 
 \item{by}{The vector of factor columns/variables representing groups}
 }

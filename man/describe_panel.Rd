@@ -4,14 +4,14 @@
 \alias{describe_panel}
 \title{Calculating descriptive statistics for selected variables in the panel data}
 \usage{
-describe_panel(data, varnames, unit)
+describe_panel(data, varnames, entity)
 }
 \arguments{
 \item{data}{The data frame}
 
 \item{varnames}{The vector of numeric variables of interest}
 
-\item{unit}{The object id variable}
+\item{entity}{The object id variable}
 }
 \value{
 The tibble with the mean, the variation, and the standard deviation of selected variables for panel data.

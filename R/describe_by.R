@@ -2,7 +2,7 @@
 #'
 #' Created to provide group descriptive statistics in the tibble format
 #' @param data The data frame
-#' @param vars The vector of numeric columns/variables of interest
+#' @param varnames The vector of numeric columns/variables of interest
 #' @param by The vector of factor columns/variables representing groups
 #' @return The tibble with group descriptive statistics of selected columns
 #' @examples 
@@ -11,13 +11,13 @@
 #' group_vars <- c("Species")
 #' describe_by(iris, vars_select, group_vars)
 #' @export
-describe_by <- function(data, vars, by){
+describe_by <- function(data, varnames, by){
   require(dplyr)
   require(tidyr)
 
   desc_tibble <- data %>%
     group_by(across(all_of(by))) %>%
-    select(all_of(vars)) %>%
+    select(all_of(varnames)) %>%
     summarise(across(everything(), 
                      list(n = \(x) tidyother::number(x), 
                           mean = \(x) mean(x, na.rm = TRUE), 
