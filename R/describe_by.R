@@ -14,11 +14,12 @@ describe_by <- function(data, varnames, by){
   require(dplyr)
   require(tidyr)
   require(stringr)
+  
+  varnames <- str_replace_all(varnames, "_", ".")
 
   desc_tibble <- data %>%
     group_by(!!sym(by)) %>%
     select(all_of(varnames)) %>%
-    rename_all(list(~ stringr::str_replace_all(., "_", "."))) %>%
     summarise(across(everything(), 
                      list(n = \(x) tidyother::number(x), 
                           mean = \(x) mean(x, na.rm = TRUE), 
