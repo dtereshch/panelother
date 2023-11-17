@@ -16,6 +16,7 @@ describe_by <- function(data, varnames, by){
   require(stringr)
   
   varnames <- str_replace_all(varnames, "_", ".")
+  data <- rename_all(list(~ stringr::str_replace_all(., "_", ".")))
 
   desc_tibble <- data %>%
     group_by(!!sym(by)) %>%
