@@ -21,6 +21,6 @@ Created to provide group descriptive statistics in the tibble format
 }
 \examples{
 data("iris")
-vars_select <- c("Sepal.Length", "Sepal.Width")
-describe_by(iris, vars_select, "Species")
+vars_select <- c(Sepal.Length, Sepal.Width)
+describe_by(iris, vars_select, Species)
 }
