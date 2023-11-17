@@ -14,9 +14,6 @@ describe_by <- function(data, varnames, by){
   require(dplyr)
   require(tidyr)
   require(stringr)
-  
-  varnames <- str_replace_all(varnames, "_", ".")
-  data <- rename_all_(.dots = list(~ stringr::str_replace_all(., "_", ".")))
 
   desc_tibble <- data %>%
     group_by(!!sym(by)) %>%
@@ -29,7 +26,7 @@ describe_by <- function(data, varnames, by){
                           min = \(x) min(x, na.rm = TRUE), 
                           max = \(x) max(x, na.rm = TRUE)))) %>% 
     pivot_longer(-!!sym(by), names_to = "name", values_to = "value") %>% 
-    separate(name, c("variable", "statistic"), sep = "_") %>%
+    separate(name, into = c("variable", "statistic"), sep="_(?=[^_]+$)") %>%
     pivot_wider(names_from = statistic, values_from = value) %>%
     arrange(variable) %>% 
     select(variable, !!sym(by), n, mean, median, sd, min, max)
