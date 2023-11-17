@@ -8,15 +8,14 @@
 #' @examples 
 #' data("iris")
 #' vars_select <- c("Sepal.Length", "Sepal.Width")
-#' group_vars <- c("Species")
-#' describe_by(iris, vars_select, group_vars)
+#' describe_by(iris, vars_select, "Species")
 #' @export
 describe_by <- function(data, varnames, by){
   require(dplyr)
   require(tidyr)
 
   desc_tibble <- data %>%
-    group_by(across(all_of(by))) %>%
+    group_by(!!sym(by)) %>%
     select(all_of(varnames)) %>%
     summarise(across(everything(), 
                      list(n = \(x) tidyother::number(x), 
@@ -25,11 +24,11 @@ describe_by <- function(data, varnames, by){
                           sd = \(x) sd(x, na.rm = TRUE), 
                           min = \(x) min(x, na.rm = TRUE), 
                           max = \(x) max(x, na.rm = TRUE)))) %>% 
-    pivot_longer(where(is.numeric), names_to = "name", values_to = "value") %>% 
+    pivot_longer(-!!sym(by), names_to = "name", values_to = "value") %>% 
     separate(name, c("variable", "statistic"), sep = "_") %>%
     pivot_wider(names_from = statistic, values_from = value) %>%
     arrange(variable) %>% 
-    select(variable, by, n, mean, median, sd, min, max)
+    select(variable, !!sym(by), n, mean, median, sd, min, max)
   
   return(desc_tibble)
 }
