@@ -9,8 +9,8 @@
 #' @return The tibble with the mean, the variation, and the standard deviation of selected variables for panel data. 
 #' @examples 
 #' data("Crime", package = "plm")
-#' vars_selection <- c("crmrte", "polpc")
-#' describe_panel(Crime, vars_selection, "county")
+#' vars_select <- c("crmrte", "polpc")
+#' describe_panel(Crime, vars_select, "county")
 #' @export
 describe_panel <- function(data, varnames, entity) {
   require(rlang)

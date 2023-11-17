@@ -23,6 +23,6 @@ Decomposes the variance and the standard deviation into between and within compo
 }
 \examples{
 data("Crime", package = "plm")
-vars_selection <- c("crmrte", "polpc")
-describe_panel(Crime, vars_selection, "county")
+vars_select <- c("crmrte", "polpc")
+describe_panel(Crime, vars_select, "county")
 }
