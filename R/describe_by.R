@@ -13,7 +13,7 @@
 describe_by <- function(data, varnames, by){
   require(dplyr)
   require(tidyr)
-
+  
   desc_tibble <- data %>%
     group_by({{ by }}) %>%
     select({{ varnames }}) %>%
