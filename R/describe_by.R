@@ -24,7 +24,7 @@ describe_by <- function(data, varnames, by){
                           sd = \(x) sd(x, na.rm = TRUE), 
                           min = \(x) min(x, na.rm = TRUE), 
                           max = \(x) max(x, na.rm = TRUE)))) %>% 
-    pivot_longer(-{{by}}, names_to = "name", values_to = "value") %>% 
+    pivot_longer(-{{ by }}, names_to = "name", values_to = "value") %>% 
     extract(name, into = c("variable", "statistic"), "(.*)_([^_]+)$") %>%
     #separate(name, into = c("variable", "statistic"), sep="_(?=[^_]+$)") %>%
     #separate(name, c("variable", "statistic"), sep = "_") %>%
