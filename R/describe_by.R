@@ -11,6 +11,7 @@
 #' describe_by(iris, vars_select, Species)
 #' @export
 describe_by <- function(data, varnames, by){
+  require(rlang)
   require(dplyr)
   require(tidyr)
   
