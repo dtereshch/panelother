@@ -27,8 +27,7 @@ describe_by <- function(data, varnames, by){
     pivot_longer(-!!sym(by), names_to = "name", values_to = "value") %>% 
     extract(name, into = c("variable", "statistic"), "(.*)_([^_]+)$") %>%
     pivot_wider(names_from = statistic, values_from = value) %>%
-    arrange(variable) %>% 
-    select(variable, !!sym(by), n, mean, median, sd, min, max)
+    arrange(variable)
   
   return(desc_tibble)
 }
