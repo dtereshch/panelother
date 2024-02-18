@@ -7,8 +7,7 @@
 #' @return The tibble with group descriptive statistics of selected columns
 #' @examples 
 #' data("iris")
-#' vars_select <- c(Sepal.Length, Sepal.Width)
-#' describe_by(iris, vars_select, Species)
+#' describe_by(iris, c(Sepal.Length, Sepal.Width), Species)
 #' @export
 describe_by <- function(data, varnames, groupvar){
   require(dplyr)

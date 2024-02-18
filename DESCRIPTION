@@ -2,4 +2,4 @@ Package: tidyother
 Type: Package
 Title: Creating tidy tables in unusual circumstances
 Version: 0.0.0.0
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
