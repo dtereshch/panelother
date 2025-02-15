@@ -21,6 +21,7 @@ library(tidyother)
 ?describe_by
 ?describe_panel
 ?plot_heterog
+?plot_unbalanced
 ?explore_incomplete
 ?list_incomplete
 ```
