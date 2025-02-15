@@ -15,12 +15,9 @@ explore_incomplete(data, idvar)
 The tibble containing entities with number of missings for each variable, as well as total number of missings. The tibble is arranged by total number of missings.
 }
 \description{
-Can be helpful to detect if panel dataset is balanced or unbalanced.
+Providing a table of entities with incomplete observations (missing values)
 }
 \examples{
-# take balanced data and make it unbalanced
-# by deletion of 2nd row (2nd time period for first individual)
-data("Grunfeld", package = "plm")
-Grunfeld_missing_period <- Grunfeld[-2, ]
-detect_incomplete(Grunfeld_missing_period, firm)
+data("USSeatBelts", package = "AER")
+explore_incomplete(USSeatBelts, state)
 }
