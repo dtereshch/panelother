@@ -19,8 +19,7 @@ list_incomplete <- function(data, idvar) {
     summarise(across(everything(), ~ sum(is.na(.)))) %>% 
     mutate(total_missings = rowSums(across(where(is.numeric)))) %>%
     filter(total_missings > 0) %>%
-    select({{ idvar }}, total_missings, everything()) %>%
-    arrange(desc(total_missings))
+    select({{ idvar }}, total_missings, everything())
   
   incomplete_ids <- incomplete %>% filter(total_missings > 0) %>% select({{ idvar }}) %>% as_vector() %>% unique()
   
